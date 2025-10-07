@@ -93,6 +93,10 @@ def decode_message(image_path, password):
     
     return actual_message
 
+@app.route('/', methods=['GET'])
+def root():
+    return jsonify({"message": "Steganography Python API is running", "version": "1.0", "endpoints": ["/health", "/encode", "/decode"]})
+
 @app.route('/health', methods=['GET'])
 def health():
     return jsonify({"status": "healthy", "message": "Flask API is running"})
