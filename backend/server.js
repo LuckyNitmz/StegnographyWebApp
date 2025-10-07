@@ -44,6 +44,14 @@ const multerErrorHandler = (err, req, res, next) => {
   next();
 };
 
+// Root route for quick status
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Steganography backend is running',
+    endpoints: ['/health', '/test-python', '/api/encode', '/api/decode']
+  });
+});
+
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ status: 'healthy', message: 'Node.js backend is running' });
