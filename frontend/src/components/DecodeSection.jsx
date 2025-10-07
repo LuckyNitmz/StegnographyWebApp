@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ImageUpload from './ImageUpload';
 import axios from 'axios';
 import '../styles/DecodeSection.css';
+import '../styles/Loader.css';
 
 const API_URL =
   process.env.REACT_APP_API_URL ||
@@ -92,6 +93,12 @@ const DecodeSection = () => {
 
   return (
     <div className="decode-section">
+      {loading && (
+        <div className="loader-overlay">
+          <div className="loader"></div>
+          <div className="loader-text">Decoding message from image...</div>
+        </div>
+      )}
       <h2>🔓 Decode - Extract Information from Image</h2>
       
       <form onSubmit={handleDecode} className="decode-form">

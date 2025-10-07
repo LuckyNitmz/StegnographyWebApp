@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ImageUpload from './ImageUpload';
 import axios from 'axios';
 import '../styles/EncodeSection.css';
+import '../styles/Loader.css';
 
 const API_URL =
   process.env.REACT_APP_API_URL ||
@@ -85,6 +86,12 @@ const EncodeSection = () => {
 
   return (
     <div className="encode-section">
+      {loading && (
+        <div className="loader-overlay">
+          <div className="loader"></div>
+          <div className="loader-text">Encoding message in image...</div>
+        </div>
+      )}
       <h2>🔒 Encode - Hide Information in Image</h2>
       
       <form onSubmit={handleEncode} className="encode-form">
