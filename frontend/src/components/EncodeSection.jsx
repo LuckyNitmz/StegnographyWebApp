@@ -3,7 +3,11 @@ import ImageUpload from './ImageUpload';
 import axios from 'axios';
 import '../styles/EncodeSection.css';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+const API_URL =
+  process.env.REACT_APP_API_URL ||
+  (typeof window !== 'undefined' && window.location.hostname !== 'localhost'
+    ? 'https://steganography-backend-6hok.onrender.com'
+    : 'http://localhost:3001');
 
 const EncodeSection = () => {
   const [selectedImage, setSelectedImage] = useState(null);
